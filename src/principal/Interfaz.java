@@ -296,11 +296,19 @@ public class Interfaz extends javax.swing.JFrame {
             } 
           } catch(Exception e){}
           
+          
+          // Graficar
           for (Opera operacion : analizador_sintac.operaciones){
               DiagramaSet diagrama = operacion.dibujar();
               // guardar esto en un jpanel
               this.panel.add(diagrama);
           }
+          
+          // Simplificar
+          // crear y ejecutar simplificar
+          // guardar resultado
+          // crear el json  y llenarlo
+          // guardar en un archivo predeterminado
 
     }//GEN-LAST:event_ejecutarActionPerformed
 
