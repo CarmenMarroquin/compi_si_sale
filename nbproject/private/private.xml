@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/herramientas/Tipo.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/lenguaje/Instruccion.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/herramientas/Conjunto.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/principal/Main.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/Parser.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/Lexer.jflex</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/sentencias/Encapsulado.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/herramientas/Operaciones.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/sentencias/Opera.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/Complemento.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/Expresion.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/herramientas/Entorno.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/graficas/Graficar.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/principal/Interfaz.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/Lexer.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/herramientas/Simbolo.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/graficas/DiagramaVenn.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/Diferencia.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/sym.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/Interseccion.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/Union.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/analizadorCJ/Parser.cup</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/sentencias/Evaluar.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/expresiones/AccederId.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/sentencias/Conj.java</file>
+            <file>file:/C:/Users/carme/OneDrive/Escritorio/Compi1_proyect/src/interprete/sentencias/Sentencia.java</file>
+        </group>
+    </open-files>
+</project-private>
