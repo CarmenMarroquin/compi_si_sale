@@ -63,4 +63,8 @@ public class Opera extends Sentencia{
                 throw new AssertionError();
         }
     }
+    
+    public ArrayList<String> simplificacion(){
+        
+    }
 }
