@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author carme
+ * @author carmen
  */
 public class Opera extends Sentencia{
     public String id;
@@ -65,6 +65,7 @@ public class Opera extends Sentencia{
     }
     
     public ArrayList<String> simplificacion(){
-        
+        ArrayList<String> cadena = new ArrayList();
+        return cadena;
     }
 }
