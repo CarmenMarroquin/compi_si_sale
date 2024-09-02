@@ -39,6 +39,7 @@ public class Opera extends Sentencia{
         Conjunto resultado = this.expr.evaluar(entorno);
         System.out.println("El numero final de conjuntos es: " + AccederId.contadorConjuntos);
         this.contadorConjuntos = AccederId.conjuntosAccedidos;
+
         
         AccederId.conjuntosAccedidos = new ArrayList<String>();
         Simbolo nuevoSimbolo = new Simbolo(this.fila, this.columna, this.id, resultado, entorno, Tipo.OPERA);
