@@ -16,11 +16,9 @@ public class Diagrama3Set extends DiagramaSet {
         super(nConjs, expr, setColor);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
 
+	@Override
+	protected void dibujarDiagrama(Graphics2D g2d, int width, int height){
         // Crear tres conjuntos como círculos
         ArrayList<Ellipse2D> elipses = new ArrayList<>();
         Ellipse2D circle1 = new Ellipse2D.Double(150, 100, 200, 200);
@@ -30,15 +28,14 @@ public class Diagrama3Set extends DiagramaSet {
         elipses.add(circle2);
         elipses.add(circle3);
 
-
         Area result = this.expr.dibujar(elipses, nombreConjuntos);
 
-        g2.setPaint(this.colorArea);
-        g2.fill(result);
-        
-        g2.setColor(Color.BLACK);
-        g2.draw(circle1);
-        g2.draw(circle2);
-        g2.draw(circle3);
-    }
+        g2d.setColor(Color.BLACK);
+        g2d.draw(circle1);
+        g2d.draw(circle2);
+        g2d.draw(circle3);
+
+        g2d.setPaint(this.colorArea);
+        g2d.fill(result);
+	}
 }

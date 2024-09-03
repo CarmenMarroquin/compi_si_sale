@@ -18,11 +18,8 @@ public class Diagrama2Set extends DiagramaSet {
         super(nConj, expr, setColor);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-
+	@Override
+	protected void dibujarDiagrama(Graphics2D g2d, int width, int height){
         // Crear dos conjuntos como círculos
         ArrayList<Ellipse2D> elipses = new ArrayList<>();
         Ellipse2D circle1 = new Ellipse2D.Double(100, 150, 200, 200);
@@ -30,13 +27,16 @@ public class Diagrama2Set extends DiagramaSet {
         elipses.add(circle1);
         elipses.add(circle2);
 
-        Area result = this.expr.dibujar(elipses, nombreConjuntos);
+		// Dibujar las áreas según la expresión
+		Area result = this.expr.dibujar(elipses, nombreConjuntos);
 
-        g2.setPaint(this.colorArea);
-        g2.fill(result);
+		// Dibujar los contornos de los círculos
+		g2d.setColor(Color.BLACK);
+		g2d.draw(circle1);
+		g2d.draw(circle2);
 
-        g2.setColor(Color.BLACK);
-        g2.draw(circle1);
-        g2.draw(circle2);
-    }
+		// colorear area
+		g2d.setPaint(this.colorArea);
+		g2d.fill(result);
+	}
 }
