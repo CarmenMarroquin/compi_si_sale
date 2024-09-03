@@ -30,13 +30,15 @@ public class Diagrama2Set extends DiagramaSet {
 		// Dibujar las áreas según la expresión
 		Area result = this.expr.dibujar(elipses, nombreConjuntos);
 
-		// Dibujar los contornos de los círculos
-		g2d.setColor(Color.BLACK);
-		g2d.draw(circle1);
-		g2d.draw(circle2);
 
 		// colorear area
 		g2d.setPaint(this.colorArea);
 		g2d.fill(result);
+
+
+		// Dibujar los contornos de los círculos
+		g2d.setColor(Color.BLACK);
+		g2d.draw(circle1);
+		g2d.draw(circle2);
 	}
 }

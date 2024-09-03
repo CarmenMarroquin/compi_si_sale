@@ -12,9 +12,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -54,5 +57,12 @@ public class DiagramaSet extends JPanel {
 
 	protected void dibujarDiagrama(Graphics2D g2d, int width, int height){
 
+	}
+
+
+	public void guardarImagen(BufferedImage imagen, String filepath) throws IOException {
+		File archivo = new File(filepath);
+		ImageIO.write(imagen, "png", archivo);
+		
 	}
 }

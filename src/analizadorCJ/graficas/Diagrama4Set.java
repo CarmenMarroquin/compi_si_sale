@@ -35,14 +35,15 @@ public class Diagrama4Set extends DiagramaSet {
 		
         Area result = this.expr.dibujar(elipses, nombreConjuntos);
 
+        g2d.setPaint(this.colorArea);
+        g2d.fill(result);
+
         g2d.setColor(Color.BLACK);
         g2d.draw(circle1);
         g2d.draw(circle2);
         g2d.draw(circle3);
         g2d.draw(circle4);
 
-        g2d.setPaint(this.colorArea);
-        g2d.fill(result);
 
 	}
 }

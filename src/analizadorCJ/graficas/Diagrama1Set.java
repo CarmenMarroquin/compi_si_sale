@@ -27,11 +27,13 @@ public class Diagrama1Set extends DiagramaSet {
         
         Area result = this.expr.dibujar(elipses, nombreConjuntos);
         
-        g2d.setColor(Color.BLACK);
-        g2d.draw(circle1);
 
         g2d.setPaint(this.colorArea);
         g2d.fill(result);
+
+
+        g2d.setColor(Color.BLACK);
+        g2d.draw(circle1);
 		
 	}
 }

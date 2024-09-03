@@ -6,6 +6,7 @@ package principal;
 
 import analizadorCJ.*;
 import analizadorCJ.graficas.DiagramaSet;
+import analizadorCJ.graficas.ImagenPanel;
 import errores.Error_;
 import interprete.herramientas.Entorno;
 import interprete.herramientas.Operaciones;
@@ -14,6 +15,8 @@ import interprete.herramientas.Tipo;
 import interprete.lenguaje.Instruccion;
 import interprete.sentencias.Opera;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,6 +30,8 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import java_cup.runtime.Symbol;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -61,7 +66,7 @@ public class Interfaz extends javax.swing.JFrame {
         area_texto = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         consola = new javax.swing.JTextArea();
-        panel = new javax.swing.JPanel();
+        imagenPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         abrir_archivo = new javax.swing.JMenuItem();
@@ -83,15 +88,19 @@ public class Interfaz extends javax.swing.JFrame {
         consola.setRows(5);
         jScrollPane2.setViewportView(consola);
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+        imagenPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        imagenPanel.setName("imagePanel"); // NOI18N
+        imagenPanel.setOpaque(false);
+
+        javax.swing.GroupLayout imagenPanelLayout = new javax.swing.GroupLayout(imagenPanel);
+        imagenPanel.setLayout(imagenPanelLayout);
+        imagenPanelLayout.setHorizontalGroup(
+            imagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 446, Short.MAX_VALUE)
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
+        imagenPanelLayout.setVerticalGroup(
+            imagenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Archivo");
@@ -159,7 +168,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(jScrollPane2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imagenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,10 +176,11 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(imagenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -227,14 +237,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_abrir_archivoActionPerformed
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
-
-        
-          //  StringReader reader = new StringReader(area_texto.getText());
-              //  BufferedReader text = new BufferedReader(reader);
-               // analizadorJC = new Lexer (text);
-               
-               //toma el texto del area de texto
-               String texto = this.area_texto.getText();
+            String texto = this.area_texto.getText();
                
                //lo mete en el analizador lexico
             Lexer analizadorLexico = new Lexer(new BufferedReader(new StringReader(texto)));
@@ -297,15 +300,31 @@ public class Interfaz extends javax.swing.JFrame {
             } 
           } catch(Exception e){}
           
+		  this.imagenPanel.setLayout(new FlowLayout());
           for (Opera operacion : analizador_sintac.operaciones){
-              DiagramaSet diagrama = operacion.dibujar();
-	      diagrama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-              // guardar esto en un jpanel
-	      this.panel.invalidate();
-              this.panel.add(diagrama);
-	      this.panel.revalidate();
-	      this.panel.repaint();
+			  DiagramaSet diagrama = operacion.dibujar();
+			  BufferedImage imagen = diagrama.crearImagen(500, 500);
+
+			  ImageIcon icono = new ImageIcon(imagen);
+			  JLabel etiquetaImagen = new JLabel(icono);
+
+			  this.imagenPanel.add(etiquetaImagen);
+
+			  /*
+			  // this code was for saving the buffered image into a file 
+			  try{
+				  String filepath = "/home/zibas/imagen.png";
+				  diagrama.guardarImagen(imagen, filepath);
+			  } catch(IOException e){
+				  e.printStackTrace();
+			  }
+			  */
           }
+
+
+		this.imagenPanel.revalidate();
+		this.imagenPanel.repaint();
+		this.imagenPanel.updateUI();
 
     }//GEN-LAST:event_ejecutarActionPerformed
 
@@ -559,6 +578,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextArea area_texto;
     private javax.swing.JTextArea consola;
     private javax.swing.JMenuItem ejecutar;
+    private javax.swing.JPanel imagenPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -569,6 +589,5 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }
