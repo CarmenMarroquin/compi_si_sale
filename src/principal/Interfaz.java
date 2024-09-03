@@ -300,6 +300,7 @@ public class Interfaz extends javax.swing.JFrame {
             } 
           } catch(Exception e){}
           
+		  this.imagenPanel.removeAll();
 		  this.imagenPanel.setLayout(new FlowLayout());
           for (Opera operacion : analizador_sintac.operaciones){
 			  DiagramaSet diagrama = operacion.dibujar();

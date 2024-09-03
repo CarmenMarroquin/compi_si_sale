@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Diagrama4Set extends DiagramaSet {
 
 
-    public Diagrama4Set(Color setColor, Expresion expr, ArrayList<String> nConjs) {
-        super(nConjs, expr, setColor);
+    public Diagrama4Set(Color setColor, Expresion expr, ArrayList<String> nConjs, String opName) {
+        super(nConjs, expr, setColor, opName);
        
     }
 
@@ -43,6 +43,17 @@ public class Diagrama4Set extends DiagramaSet {
         g2d.draw(circle2);
         g2d.draw(circle3);
         g2d.draw(circle4);
+
+        Rectangle universo = new Rectangle(10, 40, 470, 440);
+		g2d.draw(universo);
+
+
+		dibujarTexto(g2d, nombreConjuntos.get(0), 100, 100, new Font("Arial", Font.PLAIN, 14));
+		dibujarTexto(g2d, nombreConjuntos.get(1), 380, 100, new Font("Arial", Font.PLAIN, 14));
+		dibujarTexto(g2d, nombreConjuntos.get(2), 100, 450, new Font("Arial", Font.PLAIN, 14));
+		dibujarTexto(g2d, nombreConjuntos.get(3), 380, 450, new Font("Arial", Font.PLAIN, 14));
+
+		dibujarTexto(g2d, this.opName, 80, 30, new Font("Arial", Font.BOLD, 16));
 
 
 	}

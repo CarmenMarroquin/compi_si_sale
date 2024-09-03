@@ -52,13 +52,13 @@ public class Opera extends Sentencia{
         
         switch (contador) {
             case 1:
-                return new Diagrama1Set(Color.yellow, this.expr, this.contadorConjuntos);
+                return new Diagrama1Set(Color.yellow, this.expr, this.contadorConjuntos, this.id);
             case 2:
-                return new Diagrama2Set(Color.yellow, expr, this.contadorConjuntos);
+                return new Diagrama2Set(Color.yellow, expr, this.contadorConjuntos, this.id);
             case 3:
-                return new Diagrama3Set(Color.yellow, expr, contadorConjuntos);
+                return new Diagrama3Set(Color.yellow, expr, contadorConjuntos, this.id);
             case 4:
-                return new Diagrama4Set(Color.yellow, expr, contadorConjuntos);
+                return new Diagrama4Set(Color.yellow, expr, contadorConjuntos, this.id);
             
             default:
                 throw new AssertionError();

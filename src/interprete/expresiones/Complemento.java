@@ -36,10 +36,14 @@ public class Complemento extends Expresion{
 
     @Override
     public Area dibujar(ArrayList<Ellipse2D> conjuntos, ArrayList<String> nombreConjs) {
-         Rectangle universo = new Rectangle(50, 50, 500, 500);
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Rectangle universo = new Rectangle(10, 40, 470, 440);
+
+		 Area areaUniverso = new Area(universo);
+
+		 Area result = this.exp.dibujar(conjuntos, nombreConjs);
+
+		 areaUniverso.subtract(result);
+		 return areaUniverso;
     }
     
 }

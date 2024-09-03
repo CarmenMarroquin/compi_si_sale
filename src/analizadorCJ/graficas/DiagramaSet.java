@@ -27,12 +27,13 @@ import javax.swing.JPanel;
 public class DiagramaSet extends JPanel {
     public Color colorArea; 
     public Expresion expr;
+	public String opName;
     public ArrayList<String> nombreConjuntos;
 
 
 
-    public DiagramaSet(ArrayList<String> nombreConjuntos, Expresion expr, Color setColor){
-        
+    public DiagramaSet(ArrayList<String> nombreConjuntos, Expresion expr, Color setColor, String opName){
+       	this.opName = opName; 
         this.nombreConjuntos = nombreConjuntos;
         this.expr = expr;
         this.colorArea = setColor;
@@ -57,6 +58,12 @@ public class DiagramaSet extends JPanel {
 
 	protected void dibujarDiagrama(Graphics2D g2d, int width, int height){
 
+	}
+
+	protected void dibujarTexto(Graphics2D g2d, String texto, int x, int y, Font font){
+		g2d.setFont(font);
+		g2d.setColor(Color.BLACK);
+		g2d.drawString(texto, x, y);
 	}
 
 
