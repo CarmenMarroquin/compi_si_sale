@@ -7,6 +7,7 @@ package principal;
 import analizadorCJ.*;
 import analizadorCJ.graficas.DiagramaSet;
 import errores.Error_;
+import interprete.expresiones.*;
 import interprete.herramientas.Entorno;
 import interprete.herramientas.Simbolo;
 import interprete.herramientas.Tipo;
@@ -291,7 +292,7 @@ public class Interfaz extends javax.swing.JFrame {
 		} catch (Exception e) {
 		}
 
-		// mostrar graficas
+		// mostrar graficas guardar simplificacion
 		this.imagenPanel.removeAll();
 		this.imagenPanel.setLayout(new FlowLayout());
 		for (Opera operacion : analizador_sintac.operaciones) {
@@ -302,6 +303,18 @@ public class Interfaz extends javax.swing.JFrame {
 			JLabel etiquetaImagen = new JLabel(icono);
 
 			this.imagenPanel.add(etiquetaImagen);
+
+			Expresion exp = operacion.expr;
+
+			System.out.println("--------------------------------------------");
+			System.out.println("Operacion Original: " + exp.aNotacionPolaca());
+			Expresion simplificado = operacion.simplificarExpresion();
+			System.out.println("Operacion Simplificada: " + simplificado.aNotacionPolaca());
+			System.out.println("Pasos a seguir:");
+			for (String paso : operacion.registro) {
+				System.out.println(paso);
+			}
+			System.out.println("--------------------------------------------");
 
 			/*
 			  // this code was for saving the buffered image into a file
@@ -323,7 +336,7 @@ public class Interfaz extends javax.swing.JFrame {
 		// 2. enviar la operacion a simplificar a una clase simplificadora
 		// 3. el resultado de la clase debe ser un objeto json
 		// 4. agregar el objeto json a un objeto json
-		// 5. guardar el archivo json
+		// 5. guardar el archivo json en alguna ruta
     }//GEN-LAST:event_ejecutarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
