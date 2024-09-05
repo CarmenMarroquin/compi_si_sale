@@ -296,6 +296,7 @@ public class Interfaz extends javax.swing.JFrame {
 		this.imagenPanel.removeAll();
 		this.imagenPanel.setLayout(new FlowLayout());
 		for (Opera operacion : analizador_sintac.operaciones) {
+			// Dibujar operaciones
 			DiagramaSet diagrama = operacion.dibujar();
 			BufferedImage imagen = diagrama.crearImagen(500, 500);
 
@@ -304,6 +305,7 @@ public class Interfaz extends javax.swing.JFrame {
 
 			this.imagenPanel.add(etiquetaImagen);
 
+			// Simplificar y guardar operaciones
 			Expresion exp = operacion.expr;
 
 			System.out.println("--------------------------------------------");
