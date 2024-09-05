@@ -6,6 +6,7 @@ package principal;
 
 import analizadorCJ.*;
 import analizadorCJ.graficas.DiagramaSet;
+import com.google.gson.Gson;
 import errores.Error_;
 import interprete.expresiones.*;
 import interprete.herramientas.Entorno;
@@ -22,6 +23,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java_cup.runtime.Symbol;
@@ -30,6 +33,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import reportes.ReporteSimplificacion;
 
 /**
  *
@@ -292,6 +296,8 @@ public class Interfaz extends javax.swing.JFrame {
 		} catch (Exception e) {
 		}
 
+		int item = 1;
+		Map<String, Object> reporte = new HashMap<>();
 		// mostrar graficas guardar simplificacion
 		this.imagenPanel.removeAll();
 		this.imagenPanel.setLayout(new FlowLayout());
@@ -306,8 +312,11 @@ public class Interfaz extends javax.swing.JFrame {
 			this.imagenPanel.add(etiquetaImagen);
 
 			// Simplificar y guardar operaciones
-			Expresion exp = operacion.expr;
+			Expresion simplificado = operacion.simplificarExpresion();
+			ReporteSimplificacion operacionExp = new ReporteSimplificacion(operacion.registro, simplificado.aNotacionPolaca());
+			reporte.put(operacion.id, operacionExp);
 
+			/*
 			System.out.println("--------------------------------------------");
 			System.out.println("Operacion Original: " + exp.aNotacionPolaca());
 			Expresion simplificado = operacion.simplificarExpresion();
@@ -317,8 +326,9 @@ public class Interfaz extends javax.swing.JFrame {
 				System.out.println(paso);
 			}
 			System.out.println("--------------------------------------------");
+			 */
 
-			/*
+ /*
 			  // this code was for saving the buffered image into a file
 			  try{
 				  String filepath = "/home/zibas/imagen.png";
@@ -327,11 +337,34 @@ public class Interfaz extends javax.swing.JFrame {
 				  e.printStackTrace();
 			  }
 			 */
+			item++;
 		}
 
 		this.imagenPanel.revalidate();
 		this.imagenPanel.repaint();
 		this.imagenPanel.updateUI();
+
+		Gson gson = new Gson();
+		String jsonReporte = gson.toJson(reporte);
+
+		// Usar un JFileChooser para que el usuario elija la ubicación
+		javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+		fileChooser.setDialogTitle("Guardar reporte de simplificación");
+		int userSelection = fileChooser.showSaveDialog(null);
+
+		if (userSelection == javax.swing.JFileChooser.APPROVE_OPTION) {
+			java.io.File archivo = fileChooser.getSelectedFile();
+
+			// Guardar el archivo
+			try (FileWriter writer = new FileWriter(archivo)) {
+				writer.write(jsonReporte);
+				System.out.println("Reporte guardado en: " + archivo.getAbsolutePath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("El usuario canceló la operación de guardado.");
+		}
 
 		// Hacer simplificacion
 		// 1. hacer un bucle para las operacioens
