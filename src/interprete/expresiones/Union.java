@@ -84,7 +84,7 @@ public class Union extends Expresion {
 		if (expDer instanceof Union) {
 			Union union = (Union) expDer;
 			registro.add("Propiedad asociativa");
-			return new Union(fila, columna, new Union(fila, columna, expIzq, union.exp1), expDer);
+			return new Union(fila, columna, new Union(fila, columna, expIzq, union.exp1), union.exp2);
 		}
 
 		// PROPIEDAD DISTRIBUTIBA: A U (B n C) = (A U B) n (A U C)

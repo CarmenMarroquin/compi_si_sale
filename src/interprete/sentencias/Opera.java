@@ -71,7 +71,8 @@ public class Opera extends Sentencia {
 				return new Diagrama4Set(Color.yellow, expr, contadorConjuntos, this.id);
 
 			default:
-				throw new AssertionError();
+				// TODO devolver valor vacio
+				return new Diagrama0Set(contadorConjuntos, expr, Color.yellow, this.id);
 		}
 	}
 }

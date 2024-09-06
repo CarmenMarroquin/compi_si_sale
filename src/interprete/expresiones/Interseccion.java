@@ -50,7 +50,7 @@ public class Interseccion extends Expresion {
 		Expresion expIzq = this.exp1.simplificar(registro);
 		Expresion expDer = this.exp2.simplificar(registro);
 
-		// PROPIEDAD IDEMPOTENCIA
+		// PROPIEDAD IDEMPOTENCIA: A n A = A
 		if (expIzq.esIgualA(expDer)) {
 			registro.add("Propiedad idempotente");
 			return expIzq;

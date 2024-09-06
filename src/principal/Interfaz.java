@@ -296,7 +296,6 @@ public class Interfaz extends javax.swing.JFrame {
 		} catch (Exception e) {
 		}
 
-		int item = 1;
 		Map<String, Object> reporte = new HashMap<>();
 		// mostrar graficas guardar simplificacion
 		this.imagenPanel.removeAll();
@@ -313,8 +312,13 @@ public class Interfaz extends javax.swing.JFrame {
 
 			// Simplificar y guardar operaciones
 			Expresion simplificado = operacion.simplificarExpresion();
-			ReporteSimplificacion operacionExp = new ReporteSimplificacion(operacion.registro, simplificado.aNotacionPolaca());
-			reporte.put(operacion.id, operacionExp);
+			if (operacion.registro.isEmpty()) {
+				reporte.put(operacion.id, "No se puede simplificar la operacion");
+			} else {
+				ReporteSimplificacion operacionExp = new ReporteSimplificacion(operacion.registro, simplificado.aNotacionPolaca());
+				reporte.put(operacion.id, operacionExp);
+			}
+
 
 			/*
 			System.out.println("--------------------------------------------");
@@ -337,7 +341,6 @@ public class Interfaz extends javax.swing.JFrame {
 				  e.printStackTrace();
 			  }
 			 */
-			item++;
 		}
 
 		this.imagenPanel.revalidate();
@@ -365,13 +368,12 @@ public class Interfaz extends javax.swing.JFrame {
 		} else {
 			System.out.println("El usuario canceló la operación de guardado.");
 		}
+		// TODO
+		// 2. comentario multilinea en la gramatica
+		// 3. mejorar interfaz para que haya un scroll en las graficas
+		// 3. que se puedan declarar variables con guiones bajos
+		// 4. Tal vez ordenar el codigo
 
-		// Hacer simplificacion
-		// 1. hacer un bucle para las operacioens
-		// 2. enviar la operacion a simplificar a una clase simplificadora
-		// 3. el resultado de la clase debe ser un objeto json
-		// 4. agregar el objeto json a un objeto json
-		// 5. guardar el archivo json en alguna ruta
     }//GEN-LAST:event_ejecutarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
